@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  files     File[]
+  createdAt DateTime @default(now())
+}
+
+model File {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
+  filePath   String
+  fileName   String
+  uploadedAt DateTime @default(now())
+  job        Job?
+}
+
+model Job {
+  id        Int       @id @default(autoincrement())
+  fileId    Int       @unique
+  file      File      @relation(fields: [fileId], references: [id])
+  status    JobStatus @default(PENDING)
+  progress  Int       @default(0)
+  retries   Int       @default(0)
+  createdAt DateTime  @default(now())
+  result    Result?
+}
+
+model Result {
+  id             Int      @id @default(autoincrement())
+  jobId          Int      @unique
+  job            Job      @relation(fields: [jobId], references: [id])
+  wordCount      Int
+  paragraphCount Int
+  keywords       String[]
+}
+
+enum JobStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
