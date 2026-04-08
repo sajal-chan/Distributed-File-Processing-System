@@ -7,3 +7,4 @@ uploads/*.txt
 *.log
 backend-checkpoints.md
 backend-prompt.md
+.env.example
