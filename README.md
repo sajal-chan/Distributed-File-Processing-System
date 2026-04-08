@@ -47,7 +47,6 @@ The system is designed for fast upload response: users receive a `jobId` immedia
 These commands assume you are inside the `backend` folder.
 
 ```bash
-cd e:/assignments/SniperThink/backend
 npm install
 cp .env.example .env
 # If using local Postgres + Redis, update .env values accordingly
@@ -97,7 +96,7 @@ docker-compose down
 Use `.env.example` as a template.
 
 ```env
-DATABASE_URL=postgresql://user:password@postgres:5432/sniperthink
+DATABASE_URL=postgresql://user:password@postgres:5432/file=processing
 REDIS_URL=redis://redis:6379
 PORT=5000
 MAX_FILE_SIZE_MB=10
