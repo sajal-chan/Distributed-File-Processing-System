@@ -1,8 +1,8 @@
-# SniperThink Backend
+# File Processing System Backend
 
 ## Overview
 
-This repository contains the backend for the SniperThink distributed file processing system. The backend accepts PDF and text uploads, stores metadata in PostgreSQL, queues processing jobs in BullMQ, and uses background workers to extract word counts, paragraph counts, and top keywords.
+This repository contains the backend for distributed file processing system. The backend accepts PDF and text uploads, stores metadata in PostgreSQL, queues processing jobs in BullMQ, and uses background workers to extract word counts, paragraph counts, and top keywords.
 
 The system is designed for fast upload response: users receive a `jobId` immediately, and processing continues asynchronously in a separate worker service.
 
