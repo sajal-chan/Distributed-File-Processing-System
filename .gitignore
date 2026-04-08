@@ -5,3 +5,5 @@ uploads/*.pdf
 uploads/*.txt
 .DS_Store
 *.log
+backend-checkpoints.md
+backend-prompt.md
